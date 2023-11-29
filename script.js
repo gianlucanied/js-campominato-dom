@@ -4,6 +4,22 @@ Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
 */
 
+
+// Creiamo un Array vuoto di bombe
+const positionBomb = [];
+
+// Genero numeri random
+while (positionBomb.length < 16) {
+    //Inserisco solo se il numero non è già presente nell'array
+    let numeroCasuale = genRandomNumMinMax(1, 100);
+
+    if (positionBomb.includes(numeroCasuale) === false) {
+      positionBomb.push(numeroCasuale);
+    }
+  }
+  
+console.log("Numeri random " + positionBomb);
+
 // Creiamo una const per il button start
 const startButton = document.querySelector (".button-start");
 
@@ -41,8 +57,18 @@ function showContainer() {
             // Stampiamo il numero cliccato in console
             console.log("Ho selezionato lo square numero ",i);
 
-            // Aggiungiamo la classe clicked quando cliccati
-            square.classList.add ("clicked");
+            // Aggiungiamo la classe se si clicca sulla bomba
+            if (positionBomb.includes(i) === true) {
+                console.log("Esplodi")
+                square.classList.add ("bomb");
+            } else {
+                console.log("No, sei salvo");
+                // Aggiungiamo la classe clicked quando cliccati
+                square.classList.add ("clicked");
+            }
+
+            // Stampo l'Array delle bombe al click
+            console.log("Bombe: ", positionBomb);
 }
 )
     }
@@ -54,20 +80,7 @@ function showContainer() {
 
 startButton.addEventListener("click", showContainer);
 
-// Creiamo un Array vuoto
-const numberRandom = [];
 
-// Genero numeri random
-while (numberRandom.length < 16) {
-    //Inserisco solo se il numero non è già presente nell'array
-    let numeroCasuale = genRandomNumMinMax(1, 100);
-
-    let cerca = presenteInArray(numberRandom, numeroCasuale);
-    if (cerca == false) {
-      numberRandom.push(numeroCasuale);
-    }
-  }
-  console.log("Numeri random " + numberRandom);
 
 
 /*Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
@@ -77,20 +90,10 @@ La partita termina quando il giocatore clicca su una bomba o quando raggiunge il
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba. */
 
 
+
+
 // Creiamo una funzione che ci generi 16 numeri casuali 
 function genRandomNumMinMax(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Creiamo una funzione che cerca dentro un Array
-function presenteInArray(array, element) {
-    let i = 0;
-    let result = false;
-    while (i < array.length && result == false) {
-      if (array[i] == element) {
-        result = true;
-      }
-      i++;
-    }
-    return result;
-  }

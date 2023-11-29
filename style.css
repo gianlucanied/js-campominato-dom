@@ -34,6 +34,10 @@ button {
 
 /* Sezione container */
 
+main {
+    background-color: rgba(0, 0, 0, 0.221);
+}
+
 .container {
     display: flex;
     justify-content: space-around;

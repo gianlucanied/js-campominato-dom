@@ -82,3 +82,15 @@ function genRandomNumMinMax(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Creiamo una funzione che cerca dentro un Array
+function presenteInArray(array, element) {
+    let i = 0;
+    let result = false;
+    while (i < array.length && result == false) {
+      if (array[i] == element) {
+        result = true;
+      }
+      i++;
+    }
+    return result;
+  }

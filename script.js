@@ -79,7 +79,15 @@ function showContainer() {
 
                 alert("Partita terminata, hai calpestato una bomba! Il tuo punteggio è: " +userPunteggio);
 
-                location.reload(); 
+                container.remove();
+
+                punteggio.remove();
+
+                startButton.disabled = false;
+
+                select.disabled = false;
+
+
             } else {
                 console.log("No, sei salvo");
 
@@ -100,6 +108,9 @@ function showContainer() {
 
     // Disabilitiamo il tasto start dopo che questo è stato premuto una volta
     startButton.disabled = true;
+
+    // Disabilitiamo il select difficoltà 
+    select.disabled = true;
 }
 
 

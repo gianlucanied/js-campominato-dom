@@ -73,22 +73,26 @@ function showContainer() {
             // Aggiungiamo la classe se si clicca sulla bomba
             if (positionBomb.includes(i) === true) {
 
+                // Stampiamo 'Esplodi' se si preme su una bomba
                 console.log("Esplodi")
 
+                // Aggiungiamo la classe bomb a square
                 square.classList.add ("bomb");
 
+                // alert per la fine della partita
                 alert("Partita terminata, hai calpestato una bomba! Il tuo punteggio è: " +userPunteggio);
 
+                // Rimuoviamo il container in caso si perda
                 container.remove();
 
+                // Rimuoviamo il punteggio in caso si perda
                 punteggio.remove();
 
+                // Azzeriamo il punteggio
                 userPunteggio = 0;
 
+                // Riattiviamo il tasto start
                 startButton.disabled = false;
-
-                select.disabled = false;
-
 
             } else {
                 console.log("No, sei salvo");

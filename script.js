@@ -83,6 +83,8 @@ function showContainer() {
 
                 punteggio.remove();
 
+                userPunteggio = 0;
+
                 startButton.disabled = false;
 
                 select.disabled = false;
@@ -108,9 +110,6 @@ function showContainer() {
 
     // Disabilitiamo il tasto start dopo che questo è stato premuto una volta
     startButton.disabled = true;
-
-    // Disabilitiamo il select difficoltà 
-    select.disabled = true;
 }
 
 
